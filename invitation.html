@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>四秩重逢师大园 — 福建师大历史系86届毕业四十周年聚会邀请函</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Serif SC", serif; }
+body { background: #f5f0e8; }
+
+/* 整页滚动容器 */
+.slides { width: 100%; height: 100%; overflow-y: scroll; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+.slide { width: 100%; min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 32px; position: relative; overflow: hidden; }
+
+/* ---- 配色方案：怀旧温暖 ---- */
+.slide-cover { background: linear-gradient(180deg, #8b3a3a 0%, #6b2c2c 40%, #4a1f1f 100%); color: #f5e6d3; }
+.slide-cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(245,230,195,0.15) 0%, transparent 70%); pointer-events: none; }
+.slide-greeting { background: #fdf8f0; color: #3d2b1f; }
+.slide-detail { background: #faf5eb; color: #3d2b1f; }
+.slide-schedule { background: linear-gradient(180deg, #fcf7ef 0%, #f7eed9 100%); color: #3d2b1f; }
+.slide-info { background: #fdf8f0; color: #3d2b1f; }
+.slide-photos { background: #f5efe0; color: #3d2b1f; }
+.slide-closing { background: linear-gradient(180deg, #6b2c2c 0%, #8b3a3a 50%, #5a2020 100%); color: #f5e6d3; }
+
+/* 装饰元素 */
+.ornament { width: 80px; height: 2px; background: #c9a96e; margin: 0 auto; border-radius: 1px; }
+.ornament-light { background: #f5e6d3; opacity: 0.6; }
+.circle-decor { width: 120px; height: 120px; border: 1px solid rgba(201,169,110,0.3); border-radius: 50%; position: absolute; }
+
+/* ---- 封面页 ---- */
+.cover-badge { font-size: 16px; letter-spacing: 6px; color: #e8c97a; margin-bottom: 24px; text-transform: uppercase; }
+.cover-title { font-size: 36px; font-weight: 700; letter-spacing: 4px; text-align: center; line-height: 1.5; margin-bottom: 16px; }
+.cover-title .highlight { color: #e8c97a; display: block; font-size: 28px; font-weight: 400; letter-spacing: 12px; margin-top: 4px; }
+.cover-subtitle { font-size: 17px; letter-spacing: 3px; opacity: 0.85; margin-bottom: 24px; }
+.cover-divider { width: 60px; height: 1px; background: #e8c97a; margin: 0 auto 24px; }
+.cover-info { font-size: 15px; letter-spacing: 2px; opacity: 0.8; text-align: center; line-height: 2; }
+.cover-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); font-size: 13px; letter-spacing: 2px; opacity: 0.5; animation: float 2s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+
+/* ---- 通用排版 ---- */
+.section-num { font-size: 13px; letter-spacing: 4px; color: #c9a96e; margin-bottom: 8px; }
+.section-title { font-size: 26px; font-weight: 700; letter-spacing: 3px; text-align: center; margin-bottom: 32px; color: #5a2020; }
+.slide-closing .section-title { color: #f5e6d3; }
+.body-text { font-size: 17px; line-height: 2; text-align: center; max-width: 480px; letter-spacing: 1px; }
+
+/* ---- 详情页 ---- */
+.detail-grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; max-width: 420px; }
+.detail-item { text-align: center; padding: 20px 16px; background: rgba(255,255,255,0.6); border-radius: 8px; border: 1px solid rgba(201,169,110,0.2); }
+.detail-item .icon { font-size: 24px; margin-bottom: 8px; color: #8b3a3a; }
+.detail-item .label { font-size: 14px; color: #8b7355; letter-spacing: 2px; margin-bottom: 6px; }
+.detail-item .value { font-size: 17px; font-weight: 600; color: #3d2b1f; letter-spacing: 1px; line-height: 1.6; }
+
+/* ---- 日程页 ---- */
+.schedule-list { width: 100%; max-width: 480px; }
+.day-header { font-size: 18px; font-weight: 700; color: #8b3a3a; letter-spacing: 2px; text-align: center; margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(201,169,110,0.3); }
+.day-header:first-child { margin-top: 0; }
+.schedule-item { display: flex; align-items: flex-start; padding: 10px 0; border-bottom: 1px dashed rgba(201,169,110,0.2); }
+.schedule-time { min-width: 80px; font-size: 14px; font-weight: 600; color: #8b3a3a; letter-spacing: 1px; }
+.schedule-content { flex: 1; }
+.schedule-title { font-size: 16px; font-weight: 600; color: #3d2b1f; }
+.schedule-place { font-size: 14px; color: #8b7355; margin-top: 2px; }
+
+/* ---- 费用与提示 ---- */
+.info-block { width: 100%; max-width: 460px; margin-bottom: 20px; }
+.info-block-title { font-size: 17px; font-weight: 700; color: #8b3a3a; letter-spacing: 2px; margin-bottom: 10px; }
+.info-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.info-table th, .info-table td { padding: 10px 12px; border-bottom: 1px solid rgba(201,169,110,0.2); text-align: center; }
+.info-table th { color: #8b7355; font-weight: 600; font-size: 14px; }
+.tip-list { list-style: none; padding: 0; }
+.tip-list li { padding: 6px 0; padding-left: 20px; position: relative; font-size: 15px; line-height: 1.8; color: #3d2b1f; }
+.tip-list li::before { content: '•'; position: absolute; left: 4px; color: #c9a96e; font-weight: bold; }
+
+/* ---- 结尾页 ---- */
+.closing-quote { font-size: 22px; line-height: 1.8; text-align: center; letter-spacing: 2px; margin-bottom: 32px; font-style: italic; }
+.closing-text { font-size: 16px; letter-spacing: 2px; text-align: center; opacity: 0.85; line-height: 2; }
+.closing-hosts { font-size: 15px; letter-spacing: 2px; text-align: center; opacity: 0.7; margin-top: 40px; }
+
+/* ---- 照片页 ---- */
+.photo-section { width: 100%; max-width: 420px; margin-bottom: 24px; }
+.photo-section:last-child { margin-bottom: 0; }
+.photo-section-title { font-size: 15px; font-weight: 700; color: #8b3a3a; letter-spacing: 3px; text-align: center; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid rgba(201,169,110,0.3); }
+.photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.photo-card { border-radius: 6px; overflow: hidden; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.photo-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.photo-caption { padding: 6px 8px; font-size: 12px; color: #8b7355; text-align: center; letter-spacing: 1px; background: rgba(255,255,255,0.9); }
+
+/* 音乐按钮 */
+.music-btn { position: fixed; right: 20px; bottom: 24px; z-index: 20; width: 44px; height: 44px; border-radius: 50%; background: rgba(107,44,44,0.85); border: 1px solid rgba(232,201,122,0.4); color: #e8c97a; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.music-btn.playing { animation: spin 4s linear infinite; }
+.music-btn.paused { animation: none; opacity: 0.6; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* 翻页指示 */
+.page-indicator { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 10px; }
+.page-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(201,169,110,0.3); transition: all 0.3s; }
+.page-dot.active { background: #c9a96e; transform: scale(1.3); }
+
+/* 响应式 */
+@media (max-width: 380px) {
+  .cover-title { font-size: 28px; }
+  .cover-title .highlight { font-size: 22px; letter-spacing: 8px; }
+  .section-title { font-size: 22px; }
+  .body-text { font-size: 16px; }
+  .slide { padding: 36px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-indicator" id="indicator">
+  <div class="page-dot active"></div>
+  <div class="page-dot"></div>
+  <div class="page-dot"></div>
+  <div class="page-dot"></div>
+  <div class="page-dot"></div>
+  <div class="page-dot"></div>
+  <div class="page-dot"></div>
+</div>
+
+<div class="slides" id="slides">
+
+  <!-- 第1页：封面 -->
+  <div class="slide slide-cover">
+    <div class="cover-badge">INVITATION</div>
+    <h1 class="cover-title">
+      四秩重逢师大园
+      <span class="highlight">忆旧仓山 · 访新旗山</span>
+    </h1>
+    <div class="cover-subtitle">福建师范大学历史系 1986 届</div>
+    <div class="cover-divider"></div>
+    <div class="cover-info">
+      毕业四十周年同窗聚会<br>
+      2026 年 7 月 20 日 — 22 日<br>
+      中国 · 福州
+    </div>
+    <div class="cover-scroll">向上滑动启阅</div>
+  </div>
+
+  <!-- 第2页：卷首语 -->
+  <div class="slide slide-greeting">
+    <div class="section-num">— 01 —</div>
+    <h2 class="section-title">致亲爱的同窗</h2>
+    <div class="ornament" style="margin-bottom:32px;"></div>
+    <p class="body-text">
+      弹指一挥间，四十载光阴悄然流过。<br>
+      自我们辞别校园，匆匆已是四十载春秋。<br><br>
+      四十年前，我们相聚仓山老校区，<br>
+      在红墙黛瓦间晨读、于林荫道畅谈，<br>
+      教室、图书馆、操场、食堂，<br>
+      留存着我们青涩年少的全部回忆。<br><br>
+      四十年后，母校扩建旗山新校区，<br>
+      楼宇恢弘、风光秀丽，文脉绵延，<br>
+      见证母校日新月异的发展。
+    </p>
+  </div>
+
+  <!-- 第3页：活动详情 -->
+  <div class="slide slide-detail">
+    <div class="section-num">— 02 —</div>
+    <h2 class="section-title">活动信息</h2>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="icon">📅</div>
+        <div class="label">活动时间</div>
+        <div class="value">2026年7月20日（周一）— 22日（周三）</div>
+      </div>
+      <div class="detail-item">
+        <div class="icon">📍</div>
+        <div class="label">报到地点</div>
+        <div class="value">福州仓山全季酒店（藤山店）大堂<br><span style="font-size:13px;color:#8b7355;">福建师大仓山校区田径场旁</span></div>
+      </div>
+      <div class="detail-item">
+        <div class="icon">👥</div>
+        <div class="label">参会对象</div>
+        <div class="value">福建师范大学历史系<br>1986届全体毕业生</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第4页：日程安排 -->
+  <div class="slide slide-schedule">
+    <div class="section-num">— 03 —</div>
+    <h2 class="section-title">日程安排</h2>
+    <div class="schedule-list">
+
+      <div class="day-header">7月20日（周一）</div>
+      <div class="schedule-item">
+        <div class="schedule-time">14:00-18:00</div>
+        <div class="schedule-content">
+          <div class="schedule-title">报到</div>
+          <div class="schedule-place">全季酒店（藤山店）大堂</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">18:30</div>
+        <div class="schedule-content">
+          <div class="schedule-title">晚餐</div>
+          <div class="schedule-place">酒店餐厅</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">20:00</div>
+        <div class="schedule-content">
+          <div class="schedule-title">夜游烟台山商业街</div>
+          <div class="schedule-place">烟台山</div>
+        </div>
+      </div>
+
+      <div class="day-header">7月21日（周二）</div>
+      <div class="schedule-item">
+        <div class="schedule-time">8:00</div>
+        <div class="schedule-content">
+          <div class="schedule-title">早餐</div>
+          <div class="schedule-place">酒店内</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">9:00</div>
+        <div class="schedule-content">
+          <div class="schedule-title">乘车前往闽侯校区 · 参观领先楼 · 观光车游览</div>
+          <div class="schedule-place">师大闽侯校区</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">12:00</div>
+        <div class="schedule-content">
+          <div class="schedule-title">午餐</div>
+          <div class="schedule-place">新校区餐厅</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">13:30</div>
+        <div class="schedule-content">
+          <div class="schedule-title">回酒店午休</div>
+          <div class="schedule-place">酒店</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">16:00</div>
+        <div class="schedule-content">
+          <div class="schedule-title">漫步长安山 · 寻觅大学四年美好记忆</div>
+          <div class="schedule-place">长安山</div>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">19:00</div>
+        <div class="schedule-content">
+          <div class="schedule-title">晚宴</div>
+          <div class="schedule-place">酒店餐厅</div>
+        </div>
+      </div>
+
+      <div class="day-header">7月22日（周三）</div>
+      <div class="schedule-item">
+        <div class="schedule-time">上午</div>
+        <div class="schedule-content">
+          <div class="schedule-title">酒店早餐后愉悦再见</div>
+          <div class="schedule-place">酒店</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第5页：母校掠影 -->
+  <div class="slide slide-photos">
+    <div class="section-num">— 04 —</div>
+    <h2 class="section-title">母校掠影</h2>
+    <div class="ornament" style="margin-bottom:24px;"></div>
+
+    <div class="photo-section">
+      <div class="photo-section-title">忆旧 · 仓山老校区</div>
+      <div class="photo-grid">
+        <div class="photo-card">
+          <img src="老校区1b.jpg" alt="老校区1">
+        </div>
+        <div class="photo-card">
+          <img src="老校区1.jpg" alt="老校区2">
+        </div>
+        <div class="photo-card">
+          <img src="老校区3b.jpg" alt="老校区3">
+        </div>
+        <div class="photo-card">
+          <img src="微信图片_2026-06-14_143735_211.jpg" alt="老校区4">
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-section">
+      <div class="photo-section-title">访新 · 旗山新校区</div>
+      <div class="photo-grid">
+        <div class="photo-card">
+          <img src="新校区1.jpg" alt="新校区1">
+        </div>
+        <div class="photo-card">
+          <img src="新校区2.jpg" alt="新校区2">
+        </div>
+        <div class="photo-card">
+          <img src="新校区3.jpg" alt="新校区3">
+        </div>
+        <div class="photo-card">
+          <img src="新校区4.jpg" alt="新校区4">
+        </div>
+        <div class="photo-card" style="grid-column:1/-1; max-width:50%; justify-self:center;">
+          <img src="新校区5.jpg" alt="新校区5">
+        </div>
+      </div>
+    </div>
+
+  <!-- 第6页：费用与提示 -->
+  <div class="slide slide-info">
+    <div class="section-num">— 05 —</div>
+    <h2 class="section-title">费用与提示</h2>
+
+    <div class="info-block">
+      <div class="info-block-title">费用说明</div>
+      <table class="info-table">
+        <tr><th>项目</th><th>金额</th><th>说明</th></tr>
+        <tr><td>住宿费</td><td>约300元/间</td><td>自理</td></tr>
+        <tr><td>活动费</td><td>800元/人</td><td>含大巴、三餐、纪念伴手礼、合影等</td></tr>
+      </table>
+    </div>
+
+    <div class="info-block">
+      <div class="info-block-title">温馨提示</div>
+      <ul class="tip-list">
+        <li>活动全程统一包车，无需自行驾车往返两校区</li>
+        <li>建议携带当年老照片，现场分享青春回忆</li>
+        <li>年长同学结伴出行，互相关照，活动节奏舒缓</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第7页：结尾 -->
+  <div class="slide slide-closing">
+    <div class="section-num" style="color:rgba(245,230,211,0.6);">— 06 —</div>
+    <h2 class="section-title">诚挚相邀</h2>
+    <div class="ornament ornament-light" style="margin-bottom:32px;"></div>
+    <p class="closing-quote">
+      当年青葱少年，如今已是两鬓微霜。<br>
+      岁月带走了青春，<br>
+      却带不走那份纯真的同窗情谊。
+    </p>
+    <p class="closing-text">
+      无需隆重，只愿再见时，<br>
+      你我安好，笑容如初。
+    </p>
+    <div class="ornament ornament-light" style="margin:32px auto;"></div>
+    <p class="closing-text" style="font-style:italic;">
+      让我们举杯，<br>
+      敬过往青春，<br>
+      敬深厚情谊，<br>
+      敬康宁未来！
+    </p>
+    <p class="closing-hosts">
+      福建师范大学历史系86届聚会筹备组<br>
+      2026年6月13日
+    </p>
+  </div>
+
+</div>
+
+<audio id="bgm" src="bgm.m4a" loop preload="auto"></audio>
+<button class="music-btn paused" id="musicBtn" title="播放音乐">♪</button>
+
+<script>
+// 翻页指示器联动
+const slides = document.getElementById('slides');
+const dots = document.querySelectorAll('.page-dot');
+const allSlides = document.querySelectorAll('.slide');
+
+function updateIndicator() {
+  const scrollTop = slides.scrollTop;
+  const viewHeight = slides.clientHeight;
+  let activeIndex = 0;
+  allSlides.forEach((slide, i) => {
+    const rect = slide.getBoundingClientRect();
+    if (rect.top <= viewHeight * 0.5) activeIndex = i;
+  });
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === activeIndex);
+  });
+}
+
+slides.addEventListener('scroll', updateIndicator);
+
+// 音乐播放控制
+const bgm = document.getElementById('bgm');
+const musicBtn = document.getElementById('musicBtn');
+let musicStarted = false;
+
+musicBtn.addEventListener('click', function() {
+  if (!musicStarted) {
+    bgm.play().then(() => {
+      musicStarted = true;
+      musicBtn.classList.remove('paused');
+      musicBtn.classList.add('playing');
+    }).catch(() => {});
+  } else {
+    if (bgm.paused) {
+      bgm.play();
+      musicBtn.classList.remove('paused');
+      musicBtn.classList.add('playing');
+    } else {
+      bgm.pause();
+      musicBtn.classList.remove('playing');
+      musicBtn.classList.add('paused');
+    }
+  }
+});
+
+// 首次用户交互时自动尝试播放（滚动也算）
+function autoPlayOnInteraction() {
+  if (!musicStarted) {
+    bgm.play().then(() => {
+      musicStarted = true;
+      musicBtn.classList.remove('paused');
+      musicBtn.classList.add('playing');
+    }).catch(() => {});
+  }
+}
+document.addEventListener('click', autoPlayOnInteraction, { once: true });
+document.addEventListener('touchstart', autoPlayOnInteraction, { once: true });
+document.addEventListener('scroll', autoPlayOnInteraction, { once: true });
+</script>
+
+</body>
+</html>
